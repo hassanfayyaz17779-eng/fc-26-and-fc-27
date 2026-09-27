@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EA SPORTS FC 27 - Official Rating Hub</title>
+    <!-- Premium Esports & Gaming Fonts -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --ea-bg: #030812;
+            --ea-neon-lime: #5dfc0a;
+            --ea-cyber-teal: #00f0ff;
+            --ea-card-bg: rgba(10, 20, 38, 0.7);
+            --ea-border: rgba(93, 252, 10, 0.2);
+            --ea-text: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Rajdhani', sans-serif; }
+        
+        body { 
+            background-color: var(--ea-bg); 
+            color: var(--ea-text); 
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 80% 20%, rgba(0, 240, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 10% 80%, rgba(93, 252, 10, 0.1) 0%, transparent 50%);
+        }
+
+        /* Official Logo Area styling */
+        .logo-header {
+            text-align: center;
+            padding: 60px 20px 40px 20px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 100%);
+        }
+
+        .fc27-logo-box {
+            display: inline-block;
+            background: #000;
+            border: 4px solid var(--ea-neon-lime);
+            padding: 15px 40px;
+            transform: skewX(-12deg); /* Dynamic EA Sports Geometric Slanted Edge */
+            box-shadow: 0 0 30px rgba(93, 252, 10, 0.3);
+            margin-bottom: 15px;
+        }
+
+        .fc27-logo-box h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 900;
+            font-style: italic;
+            letter-spacing: -1px;
+            color: #fff;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .fc27-logo-box h1 span {
+            color: var(--ea-neon-lime);
+            text-shadow: 0 0 10px rgba(93, 252, 10, 0.5);
+        }
+
+        .tagline {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--ea-cyber-teal);
+            margin-top: 10px;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 80px 20px; }
+
+        .section-header {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Triangle pattern indicator used by EA */
+        .section-header::before {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 16px 16px;
+            border-color: transparent transparent var(--ea-neon-lime) transparent;
+        }
+
+        /* Comparison Display Grid */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        @media(max-width: 768px) { .grid-layout { grid-template-columns: 1fr; } }
+
+        .console-panel {
+            background: var(--ea-card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-top: 3px solid var(--ea-cyber-teal);
+            padding: 30px;
+            border-radius: 4px;
+            backdrop-filter: blur(15px);
+            position: relative;
+        }
+
+        .panel-fc27 { border-top-color: var(--ea-neon-lime); }
+
+        .game-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .score-pill {
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--ea-cyber-teal);
+            padding: 4px 14px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--ea-cyber-teal);
+        }
+
+        .panel-fc27 .score-pill {
+            background: rgba(93, 252, 10, 0.1);
+            border: 1px solid var(--ea-neon-lime);
+            color: var(--ea-neon-lime);
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .data-label { color: #6b7c96; text-transform: uppercase; font-size: 1rem; letter-spacing: 1px; }
+
+        /* Tactical Review Submission Section */
+        .input-panel {
+            background: rgba(6, 12, 26, 0.9);
+            border: 1px solid var(--ea-border);
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: inset 0 0 20px rgba(93, 252, 10, 0.05);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media(max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+        .field-group { margin-bottom: 20px; }
+        .field-group label {
+            display: block;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: #9cb0c9;
+        }
+
+        .ea-input {
+            width: 100%;
+            background: #0d1527;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 14px;
+            color: #fff;
+            font-size: 1.1rem;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .ea-input:focus {
+            outline: none;
+            border-color: var(--ea-neon-lime);
+            background: #121d36;
+        }
+
+        .ea-btn {
+            width: 100%;
+            background: var(--ea-neon-lime);
+            color: #000;
+            border: none;
+            padding: 18px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s;
+            clip-path: polygon(0 0, 95% 0, 100% 30%, 100% 100%, 5% 100%, 0 70%); /* Angled Gaming Button Shape */
+        }
+
+        .ea-btn:hover {
+            background: #fff;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Global Dynamic Reviews Feed */
+        .feed-container { margin-top: 40px; }
+        .user-card {
+            background: rgba(255,255,255,0.02);
+            border-left: 4px solid var(--ea-cyber-teal);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 0 4px 4px 0;
+            position: relative;
+        }
+        .user-card-header { display: flex; justify-content: space-between; margin-bottom: 10px; font-family: 'Oswald', sans-serif; text-transform: uppercase;}
+        .user-card-name { font-size: 1.2rem; color: #fff; }
+        .user-card-rating { color: var(--ea-neon-lime); font-weight: 700; }
+        .user-card-text { font-size: 1.1rem; color: #b1c4dd; line-height: 1.5; }
+    </style>
+</head>
+<body>
+
+    <div class="logo-header">
+        <div class="fc27-logo-box">
+            <h1>EA SPORTS <span>FC 27</span></h1>
+        </div>
+        <div class="tagline">Ratings & Tactical Review Database</div>
+    </div>
+
+    <div class="container">
+        
+        <div class="section-header">Gameplay & Mechanics Comparison</div>
+        <div class="grid-layout">
+            <div class="console-panel">
+                <div class="game-title">EA SPORTS FC 26 <span class="score-pill">7.2 RATING</span></div>
+                <div class="data-row"><span class="data-label">HyperMotion V</span><span>Standard Generation</span></div>
+                <div class="data-row"><span class="data-label">Tactical AI</span><span>Semi-scripted Overlays</span></div>
+                <div class="data-row"><span class="data-label">Pacing System</span><span>Sprint Speed Dominant</span></div>
+            </div>
+            <div class="console-panel panel-fc27">
+                <div class="game-title" style="color: var(--ea-neon-lime);">EA SPORTS FC 27 <span class="score-pill">9.1 RATING</span></div>
+                <div class="data-row"><span class="data-label">HyperMotion V+</span><span style="color: var(--ea-neon-lime);">Full volumetric 1:1</span></div>
+                <div class="data-row"><span class="data-label">FC IQ Upgrade</span><span style="color: var(--ea-neon-lime);">Real-time Role Adaption</span></div>
+                <div class="data-row"><span class="data-label">Pacing System</span><span style="color: var(--ea-neon-lime);">Weight & Inertia Based</span></div>
+            </div>
+        </div>
+
+        <div class="section-header">Submit Live Tactical Rating</div>
+        <div class="input-panel">
+            <form id="fc27ReviewForm">
+                <div class="form-row">
+                    <div class="field-group">
+                        <label>Manager / User Name</label>
+                        <input type="text" id="fcName" class="ea-input" placeholder="Enter Club Manager Name..." required>
+                    </div>
+                    <div class="field-group">
+                        <label>Tactical Score</label>
+                        <select id="fcRating" class="ea-input" required>
+                            <option value="10/10 - Masterpiece">10 / 10</option>
+
+
